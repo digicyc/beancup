@@ -26,6 +26,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPLATE_DIRS = (
+    'templates'
+)
 
 # Application definition
 
@@ -40,13 +43,14 @@ DEFAULT_APPS = (
 
 THIRD_PARTY_APPS = (
     'south',
-    'django_gravatar',
 )
 
 LOCAL_APPS = (
     'votebean',
     'createbean',
     'talkbean',
+    'bean',
+    'beanblog',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
