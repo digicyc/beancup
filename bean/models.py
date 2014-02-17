@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class BeanBrand(models.Model):
@@ -21,17 +22,20 @@ class Bean(models.Model):
     dark_level = models.CharField(max_length=50, choices=DARKNESS)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
 
-    @property
-    def price(self):
-        return "$%s" % self.price
-
 
     def __unicode__(self):
         return self.name
 
 
 class BeanBrew(models.Model):
+    creator = models.ForeignKey(User)
+    bean = models.ForeignKey(Bean)
     scoops = models.IntegerField(default=1)
     cups_of_water = models.IntegerField(default=1)
     description = models.TextField()
+
+    def __unicode__(self):
+        return self.bean.name
+
+
 
