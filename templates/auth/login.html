@@ -30,10 +30,13 @@
   <body>
 
     <div class="container">
+        {% if form.errors %}
+        <p>Your username and/or password is incorrect. Please try again.</p>
+        {% endif %}
 
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="username" class="form-control" placeholder="Username" required autofocus>
         <input type="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
