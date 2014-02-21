@@ -36,8 +36,8 @@
 
       <form class="form-signin" role="form" method="post" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="username" class="form-control" placeholder="Username" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="username" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

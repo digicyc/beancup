@@ -1,0 +1,21 @@
+{% if user.is_authenticated %}
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">{{ user.first_name }} {{ user.last_name }}</a></li>
+            <li><a href="#">Add a brew</a></li>
+            <li><a href="#">Add a bean</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </li>
+{% else %}
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="/login">Login</a></li>
+            <li class="divider"></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </li>
+{% endif %}

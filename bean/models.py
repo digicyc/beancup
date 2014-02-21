@@ -21,21 +21,9 @@ class Bean(models.Model):
     description = models.TextField()
     dark_level = models.CharField(max_length=50, choices=DARKNESS)
     price = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
+    date_added = models.DateTimeField(auto_now=True)
 
 
     def __unicode__(self):
         return self.name
-
-
-class BeanBrew(models.Model):
-    creator = models.ForeignKey(User)
-    bean = models.ForeignKey(Bean)
-    scoops = models.IntegerField(default=1)
-    cups_of_water = models.IntegerField(default=1)
-    description = models.TextField()
-
-    def __unicode__(self):
-        return self.bean.name
-
-
 

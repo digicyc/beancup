@@ -30,6 +30,10 @@ TEMPLATE_DIRS = (
     'templates'
 )
 
+TEMPLATE_CONTEXT_PROCESSOR = (
+    'django.core.context_processors.request',
+)
+
 # Application definition
 
 DEFAULT_APPS = (
@@ -49,6 +53,7 @@ LOCAL_APPS = (
     'votebean',
     'bean',
     'beanblog',
+    'beanbrew',
 )
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -101,5 +106,4 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
 )

@@ -4,9 +4,9 @@
         <div class="masthead">
             <h3 class="text-muted">BeanCup</h3>
             <ul class="nav nav-justified">
-                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/beanvote/">BeanVotes</a></li>
-                <li><a href="/beanbrew/">Brewing</a></li>
+                <li class="active"><a href="/beanbrew/">Brewing</a></li>
                 <li><a href="/beanblog/">BeanBlog</a></li>
                 {% include "account_dropdown.html" %}
             </ul>
@@ -17,8 +17,11 @@
                 <h2>Welcome, {{ act_user }}</h2>
 
                 <p>
-                    This is where we will log and track our adventures with our explorations of beans and their numerous
-                    roasts.
+                    {% for brew in bean_brews %}
+                        <li>{{ brew }}</li>
+                    {% empty %}
+                        <li>No listed Brews</li>
+                    {% endfor %}
                 </p>
 
                 <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>

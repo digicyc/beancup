@@ -6,3 +6,4 @@ class VoteBean(models.Model):
     owner = models.ForeignKey(User)
     vote_count = models.IntegerField()
     bean_type = models.ForeignKey(Bean)
+    date_added = models.DateTimeField(auto_now=True)
