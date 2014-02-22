@@ -13,20 +13,40 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Welcome, {{ act_user }}</h2>
+            <div class="col-lg-8">
+                <h2>Brews</h2>
+            </div>
+        </div>
 
-                <p>
+        <div class="row">
+            <div class="col-lg-8">
+            <tbody class="table-striped">
+                <table class="table" border="1">
+                    <tr>
+                        <td>Brewer</td>
+                        <td>Bean</td>
+                        <td>Ground Level</td>
+                        <td>Scoops</td>
+                        <td>Cups of Water</td>
+                        <td>Notes</td>
+                    </tr>
                     {% for brew in bean_brews %}
-                        <li>{{ brew }}</li>
+                        <tr>
+                            <td>{{ brew.creator.first_name }}</td>
+                            <td>{{ brew.bean.name }}</td>
+                            <td>{{ brew.ground_level }}</td>
+                            <td>{{ brew.scoops }}</td>
+                            <td>{{ brew.cups_of_water }}</td>
+                            <td>{{ brew.description }}</td>
+                        </tr>
                     {% empty %}
                         <li>No listed Brews</li>
                     {% endfor %}
-                </p>
-
-                <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+                </table>
+            </tbody>
             </div>
         </div>
+    </div>
     </div>
 
 

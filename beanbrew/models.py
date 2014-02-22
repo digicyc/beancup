@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from bean.models import Bean
 
 
-class BeanBrew(models.Model):
+class Brew(models.Model):
     creator = models.ForeignKey(User)
     bean = models.ForeignKey(Bean)
     ground_level = models.IntegerField(default=1)

@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from beanbrew.models import BeanBrew
+from beanbrew.models import Brew
 from django.core.exceptions import ObjectDoesNotExist
 
 def home(request):
     try:
-        bean_brews = BeanBrew.objects.get()
+        bean_brews = Brew.objects.all()
     except ObjectDoesNotExist:
         bean_brews = ()
 
