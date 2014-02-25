@@ -49,7 +49,15 @@ def bean_register(request):
         form = BeanUserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
+            # Login them in if all was well.
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
             return HttpResponseRedirect("/")
+
 
     else:
         form = BeanUserCreationForm()

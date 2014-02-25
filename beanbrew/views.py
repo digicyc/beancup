@@ -4,6 +4,8 @@ from beanbrew.models import Brew
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.base import View
 from beanbrew.forms import BrewCreationForm
+from bean.models import Bean
+
 
 def home(request):
     try:
@@ -21,7 +23,14 @@ class BrewView(View):
 
     def get(self, request):
         form = BrewCreationForm()
-        return render(request, self.template_name, {"form": form,})
+        try:
+            beans = Bean.objects.all()
+        except Bean.DoesNotExist:
+            beans = ()
+        return render(request, self.template_name, {
+            "form": form,
+            "beans": beans,
+        })
 
     def post(self, request):
         form = BrewCreationForm(request.POST)

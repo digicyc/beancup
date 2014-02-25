@@ -1,5 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
+    <div class="container">
+        <div class="masthead">
+            <h3 class="text-muted">BeanCup</h3>
+            <ul class="nav nav-justified">
+                <li><a href="/">Home</a></li>
+                <li><a href="/beanvote/">BeanVotes</a></li>
+                <li class="active"><a href="/beanbrew/">Brewing</a></li>
+                <li><a href="/beanblog/">BeanBlog</a></li>
+                {% include "account_dropdown.html" %}
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>Add a Brew</h2>
+            </div>
 
+            <form role="form">
+
+                <div class="form-group">
+                    <div class="btn-group">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            Select a Bean <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for bean in beans %}
+                                <li><a href="#"><span id="{{ bean.id }}">{{ bean.name }}</span></a></li>
+                            {% endfor %}
+                            <li class="divider"></li>
+                            <li><a href="#">+ Add a Bean</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ground_level">Ground Level</label>
+                    <input type="text" class="form-control" id="ground_level" placeholder="Gound Level">
+                </div>
+                <div class="form-group">
+                    <label for="scoops">Scoops</label>
+                    <input type="text" class="form-control" id="scoops" placeholder="Scoops">
+                </div>
+                <p class="help-block">Add a new Roast.</p>
+                <button type="submit" class="btn btn-default">Submit</button>
+
+            </form>
+        </div>
+    </div>
 
 {% endblock %}
