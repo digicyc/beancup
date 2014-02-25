@@ -27,7 +27,7 @@
                         <td>Bean</td>
                         <td>Ground Level</td>
                         <td>Scoops</td>
-                        <td>Cups of Water</td>
+                        <td>Bottles of Water</td>
                         <td>Notes</td>
                     </tr>
                     {% for brew in bean_brews %}
@@ -36,7 +36,7 @@
                             <td>{{ brew.bean.name }}</td>
                             <td>{{ brew.ground_level }}</td>
                             <td>{{ brew.scoops }}</td>
-                            <td>{{ brew.cups_of_water }}</td>
+                            <td>{{ brew.water_bottles }}</td>
                             <td>{{ brew.description }}</td>
                         </tr>
                     {% endfor %}

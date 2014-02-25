@@ -33,13 +33,26 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="ground_level">Ground Level</label>
-                    <input type="text" class="form-control" id="ground_level" placeholder="Gound Level">
+                    <label for="ground_option">Ground Option</label>
+                    <br/>
+                    {% for radio in form.ground_option %}
+                        <div class="form-control">
+                            {{ radio }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="">Ground Level</label>
+                    <input type="text" class="form-control" id="ground_level" placeholder="Ground Level (1-4)"/>
                 </div>
                 <div class="form-group">
                     <label for="scoops">Scoops</label>
                     <input type="text" class="form-control" id="scoops" placeholder="Scoops">
                 </div>
+            <div class="form-group">
+                <label for="water_bottles">Water Bottles</label>
+                <input class="form-control" type="text" id="water_bottles" placeholder="Water Bottles Amount"/>
+            </div>
                 <p class="help-block">Add a new Roast.</p>
                 <button type="submit" class="btn btn-default">Submit</button>
 

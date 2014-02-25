@@ -21,10 +21,3 @@ class BeanTestCase(TestCase):
         bean = Bean.objects.get(name='Dark Brew')
         self.assertEqual(bean.price, 20.00)
 
-
-class BeanBrewTest(TestCase):
-    def setUp(self):
-        BeanBrew.objects.create(scoops=5, cups_of_water=10, description="Heaping scoops")
-
-    def test_scoops(self):
-        bean_brew = BeanBrew.objects.get()
