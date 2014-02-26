@@ -1,9 +1,10 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 def home(request):
     user = request.user
 
-    return render_to_response('votebean/main.html', {
+    return render(request, 'votebean/main.html', {
+        'request': request,
         'test': 'test',
         'user': user,
     })

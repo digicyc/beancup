@@ -1,16 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <div class="masthead">
-            <h3 class="text-muted">BeanCup</h3>
-            <ul class="nav nav-justified">
-                <li><a href="/">Home</a></li>
-                <li><a href="/beanvote/">BeanVotes</a></li>
-                <li class="active"><a href="/beanbrew/">Brewing</a></li>
-                <li><a href="/beanblog/">BeanBlog</a></li>
-                {% include "account_dropdown.html" %}
-            </ul>
-        </div>
+    {% include 'head.html' %}
         <div class="row">
             <div class="col-lg-8">
                 <h2>Add a Brew</h2>
