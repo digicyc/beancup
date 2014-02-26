@@ -20,15 +20,15 @@ def home(request):
 
 class BrewView(View):
     template_name = 'beanbrew/add_brew.html'
+    form = BrewCreationForm()
 
     def get(self, request):
-        form = BrewCreationForm()
         try:
             beans = Bean.objects.all()
         except Bean.DoesNotExist:
             beans = ()
         return render(request, self.template_name, {
-            "form": form,
+            "form": self.form,
             "beans": beans,
         })
 
