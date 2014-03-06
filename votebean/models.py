@@ -5,5 +5,5 @@ from bean.models import Bean
 class VoteBean(models.Model):
     owner = models.ForeignKey(User)
     vote_count = models.IntegerField()
-    bean_type = models.ForeignKey(Bean)
+    bean_type = models.ForeignKey(Bean, unique=True)
     date_added = models.DateTimeField(auto_now=True)

@@ -1,11 +1,10 @@
 <div class="masthead">
     <h3 class="text-muted">BeanCup</h3>
     <ul class="nav nav-justified">
-        <li{% if request.path == '' %}class = "active"{% endif %}><a href="/">Home</a></li>
-        <li{% if request.path == '/beanvote/' %}class = "active"{% endif %}><a href="/beanvote/">BeanVotes</a></li>
-        <li{% if request.path == '/beanbrew/' %}class = "active"{% endif %}><a href="/beanbrew/">Brewing</a></li>
-        <li{% if request.path == '/beanblog/' %}class = "active"{% endif %}><a href="/beanblog/">BeanBlog</a></li>
+        <li{% if not request.path %} class = "active"{% endif %}><a href="/">Home</a></li>
+        <li{% if request.path == '/beanvote/' %} class = "active"{% endif %}><a href="/beanvote/">BeanVotes</a></li>
+        <li{% if request.path == '/beanbrew/' %} class = "active"{% endif %}><a href="/beanbrew/">Brewing</a></li>
+        <li{% if request.path == '/beanblog/' %} class = "active"{% endif %}><a href="/beanblog/">BeanBlog</a></li>
         {% include "account_dropdown.html" %}
     </ul>
-    Path: {{ request }}
 </div>
