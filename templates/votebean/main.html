@@ -2,15 +2,27 @@
 {% block content %}
     <div class="container">
 
-    {% include 'head.html' %}
+        {% include 'head.html' %}
 
-      <div class="jumbotron">
-          <h1>Bean Voting</h1>
-          <p class="lead">
-              Vote for your favorite bean roast.
-          </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-      </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>Brew Votes</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <tbody class="table-striped">
+                <table class="table" border="1">
+                    <tr>
+                        <td>Votes</td>
+                        <td>Brewer</td>
+                        <td>Bean</td>
+                    </tr>
+                </table>
+                </tbody>
+            </div>
+        </div>
 
     </div>
 
