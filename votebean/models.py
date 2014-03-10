@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from bean.models import Bean
 
 class VoteBean(models.Model):
-    owner = models.ForeignKey(User)
-    vote_count = models.IntegerField()
+    voter = models.ForeignKey(User)
     bean_type = models.ForeignKey(Bean, unique=True)
+    vote_count = models.IntegerField()
     date_added = models.DateTimeField(auto_now=True)

@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'beancup.views.home', name='bean_home'),
     url(r'^beanblog/', include('beanblog.urls'), name='bean_blog'),
+    url(r'^bean/', include('bean.urls'), name='bean'),
     url(r'^beanvote/', include('votebean.urls'), name='bean_votes'),
     url(r'^beanbrew/', include('beanbrew.urls'), name='bean_brew'),
     url(r'^admin/', include(admin.site.urls)),
