@@ -1,5 +1,5 @@
 from django.test import TestCase
-from bean.models import Bean, BeanBrand, BeanBrew
+from bean.models import Bean, BeanBrand
 
 
 class BeanTestCase(TestCase):
