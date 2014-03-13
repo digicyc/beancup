@@ -3,29 +3,57 @@ from bean.models import Bean, BeanBrand
 from beanbrew.models import Brew
 
 class BrewCreationForm(forms.Form):
-    creator = forms.CharField()
+    # Bean form
     bean = forms.CharField()
+    dark_choices = forms.ChoiceField(widget=forms.RadioSelect(), choices=Bean.DARKNESS)
+    bean_brand = forms.ModelChoiceField(widget=forms.Select(), queryset=BeanBrand.objects.all())
+    bean_desc = forms.CharField()
+
+    # Brew form
     ground_option = forms.ChoiceField(widget=forms.RadioSelect(), choices=Brew.GRIND_LEVEL)
     ground_level = forms.IntegerField()
     scoops = forms.IntegerField()
     water_bottles = forms.IntegerField()
     description = forms.Textarea()
 
-    def save(self, commit=True):
-        bean_clean = self.cleaned_data['bean']
-        c_creator = self.cleaned_data['creator']
-        c_ground_level = self.cleaned_data['ground_level']
-        c_ground_option = self.cleaned_data['ground_option']
-        c_scoops = self.cleaned_data['scoops']
-        c_water_bottles = self.cleaned_data['water_bottles']
-        c_desc = self.cleaned_data['description']
+
+    def save(self, user, commit=True):
+        # Bean Stuff
+        bean_name = self.cleaned_data['bean']
+        dark_level = self.cleaned_data['dark_level']
+        bean_brand = self.cleaned_data['brand']
+        bean_desc = self.cleaned_data['bean_desc']
+
+
+        # Brew Stuff
+        ground_level = self.cleaned_data['ground_level']
+        ground_option = self.cleaned_data['ground_option']
+        scoops = self.cleaned_data['scoops']
+        water_bottles = self.cleaned_data['water_bottles']
+        desc = self.cleaned_data['description']
+
+
+        try:
+            brand = BeanBrand.objects.get(name=bean_brand)
+        except BeanBrand.DoesNotExist:
+            brand = BeanBrand(name=bean_brand)
+            brand.save()
+
+        try:
+            bean = Bean.objects.get(name=bean_name, brand=brand)
+        except Bean.DoesNotExist:
+            bean = Bean(
+                name=bean_name, brand=brand, description=bean_desc, dark_level=dark_level,
+            )
+            bean.save()
 
         brew = Brew(
-            creator=c_creator, bean=bean_clean, ground_level=c_ground_level,
-            ground_option=c_ground_option, scoops=c_scoops, water_bottles=c_water_bottles,
-            description=c_desc
+            creator=user, bean=bean, ground_level=ground_level,
+            ground_option=ground_option, scoops=scoops, water_bottles=water_bottles,
+            description=desc
         )
         if commit:
             brew.save()
+
         return brew
 
