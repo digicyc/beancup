@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'auth/login.html'}),
     url(r'^register/', 'beancup.views.bean_register', name='bean_register'),
     url(r'^accounts/profile/$', 'beancup.views.profile', name='bean_profile'),
+    url(r'^api/v1/beanbrew/$', include('beanbrew.api.urls'), name='brew_api'),
 
 )
