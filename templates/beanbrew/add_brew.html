@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-    {% include 'head.html' %}
+        {% include 'head.html' %}
         <div class="row">
             <div class="col-lg-8">
                 <h2>Add a Brew</h2>
@@ -19,10 +19,41 @@
                                 <li><a href="#"><span id="{{ bean.id }}">{{ bean.name }}</span></a></li>
                             {% endfor %}
                             <li class="divider"></li>
-                            <li><a href="#">+ Add a Bean</a></li>
+                            <li><a href="#" id="add_bean"><span class="glyphicon glyphicon-plus"></span> Add a Bean</a></li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- This shows up if adding a new bean -->
+                <div id="bean_form" style="display: none;">
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                Select Darkness Level <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for dark_choice in dark_choices %}
+                                    <li><a href="#"><span id="{{ dark_choice.0 }}">{{ dark_choice.1 }}</span></a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="bean_brand">Bean Brand</label>
+                            <input class="form-control" id="bean_brand" type="text" placeholder="Bean Brand"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="bean_name">Bean Name</label>
+                            <input class="form-control" id="bean_name" type="text" placeholder="Bean Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="bean_desc">Bean Desc</label>
+                            <input class="form-control" id="bean_desc" type="text" placeholder="Bean Desc"/>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <div class="form-group">
                     <label for="ground_option">Ground Option</label>
                     <br/>
@@ -40,10 +71,10 @@
                     <label for="scoops">Scoops</label>
                     <input type="text" class="form-control" id="scoops" placeholder="Scoops">
                 </div>
-            <div class="form-group">
-                <label for="water_bottles">Water Bottles</label>
-                <input class="form-control" type="text" id="water_bottles" placeholder="Water Bottles Amount"/>
-            </div>
+                <div class="form-group">
+                    <label for="water_bottles">Water Bottles</label>
+                    <input class="form-control" type="text" id="water_bottles" placeholder="Water Bottles Amount"/>
+                </div>
                 <p class="help-block">Add a new Roast.</p>
                 <button type="submit" class="btn btn-default">Submit</button>
 
@@ -51,4 +82,14 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('#add_bean').click(function(){
+            $('#bean_form').show();
+        })
+    });
+</script>
 {% endblock %}

@@ -30,10 +30,11 @@ class BrewView(View):
         return render(request, self.template_name, {
             "form": self.form,
             "beans": beans,
+            "dark_choices": Bean.DARKNESS,
         })
 
     def post(self, request):
-        form = BrewCreationForm(request.POST)
+        form = BrewCreationForm(request.POST, request.user)
         if form.is_valid():
-            form.save()
+            form.save(request.user)
             return HttpResponseRedirect('/beanbrew/')
